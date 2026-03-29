@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Varshika Ravindran</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0d1117;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* BACKGROUND */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  background: #161b22;
+  padding: 10px;
+  text-align: center;
+  color: #00b4d8;
+  font-size: 20px;
+}
+
+/* HERO (FIXED NO EXTRA SPACE) */
+.hero {
+  padding: 40px 20px 20px;
+  text-align: center;
+}
+
+/* SECTIONS (LESS GAP) */
+section {
+  padding: 20px 20px;
+}
+
+/* CARD */
+.card {
+  background: rgba(22,27,34,0.7);
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  margin: 8px 0;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px #00b4d8;
+}
+
+/* TITLES */
+h2 {
+  color: #00b4d8;
+  border-bottom: 2px solid #00b4d8;
+  display: inline-block;
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* SMALL CONTACT BUTTONS */
+.contact-btn {
+  display: inline-block;
+  background: #00b4d8;
+  color: black;
+  padding: 6px 10px;
+  margin: 5px 3px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@media(max-width: 768px){
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<nav>Varshika Ravindran</nav>
+
+<!-- HERO -->
+<section class="hero">
+<h1>Varshika Ravindran</h1>
+<p>Mechanical Engineering Student</p>
+<p>Coimbatore, India | varshikar2@gmail.com</p>
+</section>
+
+<!-- SUMMARY -->
+<section>
+<h2>Professional Summary</h2>
+<div class="card">
+Motivated and enthusiastic first-year Mechanical Engineering student with a strong interest in integrating technology with core engineering concepts. Possesses foundational knowledge in Python programming and hands-on experience in website creation using Wix. Skilled in Canva for visual design and familiar with emerging AI technologies such as prompt engineering, LangChain basics, and RAG concepts. Demonstrates strong problem-solving ability, adaptability, and teamwork. Passionate about combining mechanical systems with software and AI-driven solutions to build innovative and efficient systems.
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section>
+<h2>Education</h2>
+<div class="card">
+B.E Mechanical Engineering (2025–2029)<br>
+SNS College of Technology, Coimbatore
+</div>
+</section>
+
+<!-- SKILLS -->
+<section>
+<h2>Technical Skills</h2>
+
+<div class="grid">
+
+<div class="card">
+<b>Programming</b>
+<p>Python (Basic), Java (Basic), JavaScript (Basic)</p>
+</div>
+
+<div class="card">
+<b>AI & ML</b>
+<p>Prompt Engineering, LangChain Basics, RAG Concepts, Gemini API</p>
+</div>
+
+<div class="card">
+<b>Web</b>
+<p>Wix Website Development</p>
+</div>
+
+<div class="card">
+<b>Tools</b>
+<p>GitHub, VS Code, Colab, Jupyter, Canva</p>
+</div>
+
+<div class="card">
+<b>Database</b>
+<p>SQL (Basic)</p>
+</div>
+
+<div class="card">
+<b>Hardware</b>
+<p>Breadboard, Circuit Connections</p>
+</div>
+
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section>
+<h2>Projects</h2>
+
+<div class="card">
+<b>Smart Agro System</b>
+<p>IoT-based soil moisture monitoring system with real-time tracking and LED indicators.</p>
+</div>
+
+<div class="card">
+<b>EV Charging Station Website</b>
+<p>Developed using Wix for locating stations, availability tracking, and booking slots.</p>
+</div>
+
+</section>
+
+<!-- CERTIFICATIONS -->
+<section>
+<h2>Certifications</h2>
+
+<div class="card">Fundamentals of Artificial Intelligence – NPTEL</div>
+<div class="card">Principles of Industrial Engineering – IIT Roorkee</div>
+<div class="card">Innovision HackOn 2K26 – Hackathon Participation</div>
+
+</section>
+
+<!-- CONTACT -->
+<section>
+<h2>Contact</h2>
+
+<a class="contact-btn" href="mailto:varshikar2@gmail.com">Email</a>
+<a class="contact-btn" href="https://github.com/VARSHIKA1810" target="_blank">GitHub</a>
+<a class="contact-btn" href="https://www.linkedin.com/in/varshika-r" target="_blank">LinkedIn</a>
+
+</section>
+
+<script>
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let dots = [];
+for(let i=0;i<70;i++){
+  dots.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: Math.random()*2,
+    dx: Math.random()-0.5,
+    dy: Math.random()-0.5
+  });
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="#00b4d8";
+
+  dots.forEach(d=>{
+    ctx.beginPath();
+    ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+    ctx.fill();
+
+    d.x+=d.dx;
+    d.y+=d.dy;
+
+    if(d.x<0||d.x>canvas.width) d.dx*=-1;
+    if(d.y<0||d.y>canvas.height) d.dy*=-1;
+  });
+
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+</html>
